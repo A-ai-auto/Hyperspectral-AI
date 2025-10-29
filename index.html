@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 视口设置，确保在移动设备上正确显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本网页架构</title>
+    
+    <!-- 引入外部资源 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6', // 主色调：蓝色
+                        secondary: '#10B981', // 辅助色：绿色
+                        neutral: '#64748B', // 中性色：灰色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- 页面头部 -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- 网站标志 -->
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-cube text-primary text-2xl"></i>
+                <h1 class="text-xl font-bold text-gray-800">Remote Sensing</h1>
+            </div>
+            
+            <!-- 导航菜单 - 桌面版 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                <a href="#SRHS" class="text-gray-700 hover:text-primary transition-colors">Standard HS Pansharpening</a>
+                <a href="#ARHS" class="text-gray-700 hover:text-primary transition-colors">Arbitrary Resolution HS Pansharpening</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Others</a>
+            </nav>
+            
+        
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-primary py-2 transition-colors">Home</a>
+                <a href="#SRHS" class="text-gray-700 hover:text-primary py-2 transition-colors">Standard HS Pansharpening</a>
+                <a href="#ARHS" class="text-gray-700 hover:text-primary py-2 transition-colors">Arbitrary Resolution HS Pansharpening</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary py-2 transition-colors">Others</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 Our institution is dedicated to advancing the fild of hyperspectral image processing through cutting-edge research and innovative solutions. -->
+    <main>
+        <section id="home" class="bg-gradient-to-r from-primary/90 to-primary py-20 md:py-32">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center text-white">
+                    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-6">
+                        Hyperspectral AI
+                    </h2>
+                    <p class="text-[clamp(0.8rem,1.5vw,1.0rem)] text-white/90 mb-8">
+                        Dedicated to advancing hyperspectral AI through cutting-edge research and innovative solutions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="SRHS" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">Standared HS Pansharpening</h2>
+                    <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="text-gray-600 text-start">
+                        Defination: The target HRHS resolution is the PAN resolution; meanwhile, scale invariance is postulated  (pansharpening scale in the training satge = pansharpening scale in the inferring satge).
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-8">
+                    <!-- 服务卡片 1 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Method1</h3>
+                        <!-- <img src="你的图片路径.jpg" 
+                            class="img-fluid rounded-lg mb-4" 
+                            alt="Method1 PNN 示意图"
+                            style="max-height: 180px; object-fit: cover;"> -->
+                        <p class="text-gray-600 mb-6">
+                            PNN:
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片 2 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Method2</h3>
+                        <p class="text-gray-600 mb-6">
+                            HyperPNN:
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片 3 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Method3</h3>
+                        <p class="text-gray-600 mb-6">
+                            HspeNet:
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 服务区域 -->
+        <section id="ARHS" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">Arbitrary Resolution HS Pansharpening </h2>
+                    <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="text-gray-600 text-left">
+                        Difination:
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-8">
+                    <!-- 服务卡片 1 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Arbitrary-Resolution Hyperspectral Pansharpening Neural Operators</h3>
+                        <p class="text-gray-600 mb-6">
+                            Neutral operator: 
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片 2 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Method2</h3>
+                        <p class="text-gray-600 mb-6">
+                            Transformer:
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- 服务卡片 3 -->
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Method3</h3>
+                        <p class="text-gray-600 mb-6">
+                            Two INR:
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-xl font-semibold mb-4">Method4</h3>
+                        <p class="text-gray-600 mb-6">
+                            Two INR:
+                        </p>
+                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                            Code <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">Others</h2>
+                    <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        We also......
+                    </p>
+                </div>
+                
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 opacity-0 invisible">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // 切换图标
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+        
+        // 点击移动端菜单项后关闭菜单
+        const mobileMenuItems = mobileMenu.querySelectorAll('a');
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // 考虑固定导航的高度
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+            
+            // 导航栏滚动效果
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+    </script>
+</body>
+</html>
